@@ -3,7 +3,7 @@
 // % color=#008272 weight=32 icon="\uf205" %
 // advanced=true
 //
-namespace led-ext {
+namespace ledext {
     let img: Image;
 
     /**
@@ -12,7 +12,7 @@ namespace led-ext {
      * @param y vertical coordinate, eg: 2
      */
     //% weight=60 blockGap=8
-    //% blockId=led-ext_set block="set pixel at|x: %x|y: %y|to brightness:%b"
+    //% blockId=ledext_set block="set pixel at|x: %x|y: %y|to brightness:%b"
     //% parts="ledmatrix"
     export function set(x: number, y: number, b: number) {
         init();
@@ -34,7 +34,7 @@ namespace led-ext {
      * @param y vertical coordinate, eg: 2
      */
     //% weight=60 blockGap=8
-    //% blockId=led-ext_unset block="unset pixel at|x: %x|y: %y"
+    //% blockId=ledext_unset block="unset pixel at|x: %x|y: %y"
     //% parts="ledmatrix"
     export function unset(x: number, y: number) {
         init();
