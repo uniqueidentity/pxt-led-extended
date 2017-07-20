@@ -50,7 +50,7 @@ namespace ledext {
     //% blockId=ledext_clear block="clear"
     //% parts="ledmatrix"
     export function clear() {
-        var r, c;
+        var r : number, c : number;
         init();
         for(r=0; r<5; r++){
             for(c=0; c<5; c++){
