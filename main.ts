@@ -47,7 +47,7 @@ namespace ledext {
      * Clears the display
      */
     //% weight=60 blockGap=8
-    //% blockId=ledext_unset block="clear"
+    //% blockId=ledext_clear block="clear"
     //% parts="ledmatrix"
     export function clear() {
         init();
