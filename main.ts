@@ -19,13 +19,7 @@ namespace ledext {
         x = Math.clamp(0, 4, x);
         y = Math.clamp(0, 4, y);
         b = Math.clamp(0, 255, b);
-        if (b == 0) {
-            img.setPixel(x, y, false);
-        }
-        else {
-            img.setPixel(x, y, true);
-            img.setPixelBrightness(x, y, b);
-        }
+        img.setPixelBrightness(x, y, b);
     }
 
     /**
@@ -38,9 +32,7 @@ namespace ledext {
     //% parts="ledmatrix"
     export function unset(x: number, y: number) {
         init();
-        x = Math.clamp(0, 5, x);
-        y = Math.clamp(0, 5, y);
-        img.setPixel(x, y, false);
+        set(x, y, 0);
     }
 
     /**
@@ -53,7 +45,7 @@ namespace ledext {
         let r: number, c: number;
         for (r = 0; r < 5; r++) {
             for (c = 0; c < 5; c++) {
-                ledext.unset(c, r);
+                unset(c, r);
             }
         }
     }
@@ -71,8 +63,7 @@ namespace ledext {
             clear();
             basic.forever(() => {
                 basic.pause(30);
-                img.plotImage(0);
-                
+                img.plotImage(0);             
             });
         }
     }
