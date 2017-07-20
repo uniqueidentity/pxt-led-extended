@@ -1,6 +1,6 @@
 // An advanced LED display
 //
-// % color=#008272 weight=32 icon="\uf205" %
+// % name="Led Ext" color=#5C2D91 weight=32 icon="\uf205" %
 // advanced=true
 //
 namespace ledext {
