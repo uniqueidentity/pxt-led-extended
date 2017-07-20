@@ -51,8 +51,8 @@ namespace ledext {
     //% parts="ledmatrix"
     export function clear() {
         init();
-        for(var r=0; r<5; r++){
-            for(var c=0; c<5; c++){
+        for(r=0; r<5; r++){
+            for(c=0; c<5; c++){
                 unset(c,r);
             }
         }
