@@ -63,7 +63,6 @@ namespace ledext {
         if (img == null) {
             img = images.createImage(". . . . . . . . . . . . . . . . . . . . . . . . .");
             led.setDisplayMode(DisplayMode.Greyscale);
-            clear();
             basic.forever(() => {
                 basic.pause(30);
                 img.plotImage(0);
