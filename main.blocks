@@ -1,0 +1,12 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="pxt-on-start" id="4D4cUfl4brk?u-.L_RCy" x="0" y="0">
+    <statement name="HANDLER">
+      <block type="typescript_statement" id="}%dWR-ZJYqJ=nu4?[/)|" editable="false">
+        <mutation line0="namespace ledadv {" line1="    let img: Image;" line2="    " line3="    /**" line4="     * Sets a pixel to the specified brightness" line5="     * @param x horizontal coordinate, eg: 2" line6="     * @param y vertical coordinate, eg: 2" line7="     */" line8="    //% weight=60 blockGap=8" line9="    //% blockId=ledadv_set block=&quot;set pixel at|x: %x|y: %y|brightness:%b&quot;" line10="    //% parts=&quot;ledmatrix&quot;" line11="    export function set(x: number, y: number, b: number) {" line12="        x = Math.clamp(0, 4, x);" line13="        y = Math.clamp(0, 4, y);" line14="        b = Math.clamp(0, 255, b);" line15="        img.setPixelBrightness(x, y, b);" line16="    }" line17="" line18="    function init(): void {" line19="        if (img == null) {" line20="            img = images.createImage(" line21="                `0 0 0 0 0" line22="0 0 0 0 0" line23="0 0 0 0 0" line24="0 0 0 0 0" line25="0 0 0 0 0`);" line26="            led.setDisplayMode(DisplayMode.Greyscale);" line27="            basic.forever(() =&gt; {" line28="                basic.pause(30);" line29="                img.plotImage(0);" line30="            });" line31="        }" line32="    }" line33="" line34="    init();" line35="}" numlines="36"></mutation>
+        <comment pinned="false" h="80" w="160">A single-LED sprite game engine
+% color=#008272 weight=32 icon="\uf11b" % advanced=true
+        </comment>
+      </block>
+    </statement>
+  </block>
+</xml>
