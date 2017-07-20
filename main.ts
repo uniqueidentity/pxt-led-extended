@@ -60,12 +60,19 @@ namespace ledext {
     
     function init(): void {
         if (img == null) {
-            img = images.createImage(". . . . . . . . . . . . . . . . . . . . . . . . .");
+            img = images.createImage(`
+                . . . . .
+                . . . . .
+                . . . . .
+                . . . . .
+                . . . . .
+                `);
             led.setDisplayMode(DisplayMode.Greyscale);
             clear();
             basic.forever(() => {
                 basic.pause(30);
                 img.plotImage(0);
+                
             });
         }
     }
