@@ -42,22 +42,6 @@ namespace ledext {
         y = Math.clamp(0, 5, y);
         img.setPixel(x, y, false);
     }
-
-    /**
-     * Clears the display
-     */
-    //% weight=60 blockGap=8
-    //% blockId=ledext_clear block="clear"
-    //% parts="ledmatrix"
-    export function clear() {
-        var r : number, c : number;
-        init();
-        for(r=0; r<5; r++){
-            for(c=0; c<5; c++){
-                unset(c, r);
-            }
-        }
-    }
     
     function init(): void {
         if (img == null) {
