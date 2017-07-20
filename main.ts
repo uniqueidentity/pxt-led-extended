@@ -43,10 +43,26 @@ namespace ledext {
         img.setPixel(x, y, false);
     }
 
+    /**
+     * Clears the display
+     */
+    //% weight=60 blockGap=8
+    //% blockId=ledext_unset block="clear"
+    //% parts="ledmatrix"
+    export function clear() {
+        init();
+        for(var r=0; r<5; r++){
+            for(var c=0; c<5; c++){
+                unset(c,r);
+            }
+        }
+    }
+    
     function init(): void {
         if (img == null) {
             img = images.createImage(". . . . . . . . . . . . . . . . . . . . . . . . .");
             led.setDisplayMode(DisplayMode.Greyscale);
+            clear();
             basic.forever(() => {
                 basic.pause(30);
                 img.plotImage(0);
