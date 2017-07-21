@@ -65,7 +65,7 @@ namespace ledext {
     /**
      * Resumes refreshing of the display.
      */
-    //% weight=50 blockGap=8
+    //% weight=40 blockGap=8
     //% blockId=ledext_resume block="resume"
     //% parts="ledmatrix"
     export function resume() {
