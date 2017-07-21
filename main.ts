@@ -21,7 +21,7 @@ namespace ledext {
         y = Math.clamp(0, 4, y);
         l = Math.clamp(0, 255, l);
         img.setPixelBrightness(x, y, l);
-        refresh();
+        if (!suspended) refresh();
     }
 
     /**
@@ -105,11 +105,11 @@ namespace ledext {
     //% blockId=ledext_refresh block="refresh"
     //% parts="ledmatrix"
     export function refresh(): void {
-        if (suspended) return;
         img.plotImage(0);  
     }
     
     function init(): void {
+        suspended = false;
         img = images.createImage(`
             . . . . .
             . . . . .
