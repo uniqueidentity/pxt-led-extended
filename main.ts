@@ -38,7 +38,7 @@ namespace ledext {
     /**
      * Clears the display
      */
-    //% weight=60 blockGap=8
+    //% weight=50 blockGap=8
     //% blockId=ledext_clear block="clear"
     //% parts="ledmatrix"
     export function clear() {
@@ -55,7 +55,7 @@ namespace ledext {
     /**
      * Suspends refreshing of the display until resume is called
      */
-    //% weight=60 blockGap=8
+    //% weight=50 blockGap=8
     //% blockId=ledext_suspend block="suspend"
     //% parts="ledmatrix"
     export function suspend() {
@@ -65,8 +65,8 @@ namespace ledext {
     /**
      * Resumes refreshing of the display.
      */
-    //% weight=60 blockGap=8
-    //% blockId=ledext_resume block="suspend"
+    //% weight=50 blockGap=8
+    //% blockId=ledext_resume block="resume"
     //% parts="ledmatrix"
     export function resume() {
         suspend = false;
@@ -76,7 +76,7 @@ namespace ledext {
     /**
      * Refreshes the display
      */
-    //% weight=60 blockGap=8
+    //% weight=50 blockGap=8
     //% blockId=ledext_refresh block="refresh"
     //% parts="ledmatrix"
     export function refresh():void {
