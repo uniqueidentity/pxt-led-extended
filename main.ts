@@ -19,7 +19,7 @@ namespace ledext {
     export function set(x: number, y: number, l: number): void {
         x = Math.clamp(0, 4, x);
         y = Math.clamp(0, 4, y);
-        b = Math.clamp(0, 255, l);
+        l = Math.clamp(0, 255, l);
         img.setPixelBrightness(x, y, l);
         refresh();
     }
