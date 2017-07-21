@@ -5,6 +5,7 @@
 //
 namespace ledext {
     let img: Image;
+    let suspended: boolean;
 
     /**
      * Sets a pixel to the specified brightness
@@ -15,11 +16,11 @@ namespace ledext {
     //% blockId=ledext_set block="set pixel at|x: %x|y: %y|to brightness:%b"
     //% parts="ledmatrix"
     export function set(x: number, y: number, b: number) {
-        init();
         x = Math.clamp(0, 4, x);
         y = Math.clamp(0, 4, y);
         b = Math.clamp(0, 255, b);
         img.setPixelBrightness(x, y, b);
+        refresh();
     }
 
     /**
@@ -31,7 +32,6 @@ namespace ledext {
     //% blockId=ledext_unset block="unset pixel at|x: %x|y: %y"
     //% parts="ledmatrix"
     export function unset(x: number, y: number) {
-        init();
         set(x, y, 0);
     }
 
@@ -43,28 +43,58 @@ namespace ledext {
     //% parts="ledmatrix"
     export function clear() {
         let r: number, c: number;
+        suspend();
         for (r = 0; r < 5; r++) {
             for (c = 0; c < 5; c++) {
                 unset(c, r);
             }
         }
+        resume();
+    }
+    
+    /**
+     * Suspends refreshing of the display until resume is called
+     */
+    //% weight=60 blockGap=8
+    //% blockId=ledext_suspend block="suspend"
+    //% parts="ledmatrix"
+    export function suspend() {
+        suspend = true;
+    }
+        
+    /**
+     * Resumes refreshing of the display.
+     */
+    //% weight=60 blockGap=8
+    //% blockId=ledext_resume block="suspend"
+    //% parts="ledmatrix"
+    export function resume() {
+        suspend = false;
+        refresh();
+    }
+    
+    /**
+     * Refreshes the display
+     */
+    //% weight=60 blockGap=8
+    //% blockId=ledext_refresh block="refresh"
+    //% parts="ledmatrix"
+    export function refresh():void {
+        if (suspended) return;
+        img.plotImage(0);  
     }
     
     function init(): void {
-        if (img == null) {
-            img = images.createImage(`
-                . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
-                `);
-            led.setDisplayMode(DisplayMode.Greyscale);
-            clear();
-            basic.forever(() => {
-                basic.pause(30);
-                img.plotImage(0);             
-            });
-        }
+        img = images.createImage(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `);
+        led.setDisplayMode(DisplayMode.Greyscale);
+        clear();
     }
+    
+    init();
 }
