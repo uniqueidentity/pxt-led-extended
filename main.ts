@@ -179,7 +179,7 @@ namespace ledext {
      * @param image
      */
     //% weight=10 blockGap=8
-    //% blockId=ledext_animateFrames block="count frames in |image: %image"
+    //% blockId=ledext_countFrames block="count frames in |image: %image"
     //% parts="ledmatrix"
     export function countFrames(image: string[]) {
         if (image == null) return 0;
