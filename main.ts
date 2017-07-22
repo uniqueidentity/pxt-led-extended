@@ -1,5 +1,5 @@
 // An advanced LED display
-namespace ledext {
+namespace led-extended {
     let img: Image;
     let suspended: boolean;
 
@@ -137,16 +137,16 @@ namespace ledext {
      * Animates an image presented as an array of strings.  Each string represents a row and each character the state of a pixel. 
      * Valid characters include 0-9 to represent the brightness of a pixel, F/f to represent a flashing pixel or anything else to
      * represent the pixel being off.
-     * @param image
+     * @param image, eg: 
      * @param scrollDirection, eg: scrollDirectionStyle.RightToLeft
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      * @param animation, eg: animationStyle.None
-     * @param gapMs, eg: 200
+     * @param gap, eg: 200
      */
     //% weight=55 blockGap=8
-    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animation| ms between frames: %gapMs"
+    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animation| ms between frames: %gap"
     //% parts="ledmatrix"
-    export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gapMs: number = 200) {
+    export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gap: number = 200) {
         if (image == null) return;
         if (image.length == 0) return;
         let frames: number;
@@ -165,10 +165,10 @@ namespace ledext {
                 frames = frames + 5;
                 break;
         }
-        if (gapMs < 20) gapMs = 20;
+        if (gap < 20) gap = 20;
         for (; index < frames; index++) {
             drawFrame(index, image, scrollDirection, inputDirection);
-            basic.pause(gapMs);
+            basic.pause(gap);
         }
     }
 
