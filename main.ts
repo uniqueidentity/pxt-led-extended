@@ -246,28 +246,28 @@ namespace led_extended {
                         }
                         break;
                     case "1":
-                        level = 28;
+                        level = 10;
                         break;
                     case "2":
-                        level = 56;
+                        level = 30;
                         break;
                     case "3":
-                        level = 85;
+                        level = 70;
                         break;
                     case "4":
-                        level = 113;
+                        level = 110;
                         break;
                     case "5":
-                        level = 141;
+                        level = 140;
                         break;
                     case "6":
                         level = 170;
                         break;
                     case "7":
-                        level = 198;
+                        level = 100;
                         break;
                     case "8":
-                        level = 226;
+                        level = 225;
                         break;
                     default:
                         level = 255;
