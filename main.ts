@@ -130,7 +130,6 @@ namespace led_extended {
      * @param frameIndex, eg: 0
      * @param image
      * @param scrollDirection, eg: scrollDirectionStyle.RightToLeft
-     * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
     //% weight=45 blockGap=8
     //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from image: %image| direction: %scrollDirection"
@@ -138,7 +137,6 @@ namespace led_extended {
     export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle) {
         if (image == null) return;
         if (image.length == 0) return;
-        suspend();
         for (let y = 0; y < 5; y++) {
             for (let x = 0; x < 5; x++) {
                 let pixel: string;
@@ -214,7 +212,6 @@ namespace led_extended {
                         break;
                 }
             }
-            resume();
         }
     }
 
