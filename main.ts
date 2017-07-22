@@ -144,7 +144,7 @@ namespace ledext {
      * @param gapMs, eg: 200
      */
     //% weight=10 blockGap=8
-    //% blockId=ledext_animateFrames block="animate |image: %image| in direction: %scrollDirection| reading: %inputDirection| style: %animate| spacing: %gapMs"
+    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animate| spacing: %gapMs"
     //% parts="ledmatrix"
     export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gapMs: number = 200) {
         if (image == null) return;
@@ -197,7 +197,7 @@ namespace ledext {
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
     //% weight=10 blockGap=8
-    //% blockId=ledext_drawFrame block="draw frame from |image: %image| in direction: %scrollDirection| reading: %inputDirection"
+    //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from |image: %image| direction: %scrollDirection| reading: %inputDirection"
     //% parts="ledmatrix"
     export function drawFrame(image: string[], frameIndex: number, scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
         if (image == null) return;
