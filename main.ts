@@ -224,6 +224,11 @@ namespace led_extended {
                     pixel = "."
                 }
                 switch (pixel) {
+                    case "0":
+                    case " ":
+                    case ".":
+                        level = 0;
+                        break;
                     case "F":
                         if (frameIndex % 2 == 0) {
                             level = 0;
@@ -264,15 +269,8 @@ namespace led_extended {
                     case "8":
                         level = 226;
                         break;
-                    case "9":
-                    case "|":
-                    case "#":
-                    case "X":
-                    case "$":
-                        level = 255;
-                        break;
                     default:
-                        level = 0;
+                        level = 255;
                         break;
                 }
                 switch (scrollDirection) {
