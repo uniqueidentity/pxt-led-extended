@@ -26,7 +26,7 @@ namespace ledext {
      * @param y vertical coordinate, eg: 2
      * @param l brightness level, eg: 255
      */
-    //% weight=60 blockGap=8
+    //% weight=100 blockGap=8
     //% blockId=ledext_setLevel block="set pixel at|x: %x|y: %y|to level:%l"
     //% parts="ledmatrix"
     export function setLevel(x: number, y: number, l: number): void {
@@ -42,7 +42,7 @@ namespace ledext {
      * @param x horizontal coordinate, eg: 2
      * @param y vertical coordinate, eg: 2
      */
-    //% weight=60 blockGap=8
+    //% weight=95 blockGap=8
     //% blockId=ledext_set block="set pixel at|x: %x|y: %y"
     //% parts="ledmatrix"
     export function set(x: number, y: number): void {
@@ -54,7 +54,7 @@ namespace ledext {
      * @param x horizontal coordinate, eg: 2
      * @param y vertical coordinate, eg: 2
      */
-    //% weight=60 blockGap=8
+    //% weight=90 blockGap=8
     //% blockId=ledext_unset block="unset pixel at|x: %x|y: %y"
     //% parts="ledmatrix"
     export function unset(x: number, y: number): void {
@@ -62,33 +62,9 @@ namespace ledext {
     }
 
     /**
-     * Gets the brightness of a pixel
-     * @param x horizontal coordinate, eg: 2
-     * @param y vertical coordinate, eg: 2
-     */
-    //% weight=55 blockGap=8
-    //% blockId=ledext_getLevel block="get level of pixel at|x: %x|y: %y"
-    //% parts="ledmatrix"
-    export function getLevel(x: number, y: number): number {
-        return img.pixelBrightness(x, y)
-    }
-
-    /**
-     * Gets the state of a pixel
-     * @param x horizontal coordinate, eg: 2
-     * @param y vertical coordinate, eg: 2
-     */
-    //% weight=55 blockGap=8
-    //% blockId=ledext_get block="get state of pixel at|x: %x|y: %y"
-    //% parts="ledmatrix"
-    export function get(x: number, y: number): boolean {
-        return getLevel(x, y) > 0;
-    }
-
-    /**
      * Clears the display
      */
-    //% weight=50 blockGap=8
+    //% weight=85 blockGap=8
     //% blockId=ledext_clear block="clear"
     //% parts="ledmatrix"
     export function clear(): void {
@@ -101,11 +77,35 @@ namespace ledext {
         }
         resume();
     }
+    
+    /**
+     * Gets the brightness of a pixel
+     * @param x horizontal coordinate, eg: 2
+     * @param y vertical coordinate, eg: 2
+     */
+    //% weight=80 blockGap=8
+    //% blockId=ledext_getLevel block="get level of pixel at|x: %x|y: %y"
+    //% parts="ledmatrix"
+    export function getLevel(x: number, y: number): number {
+        return img.pixelBrightness(x, y)
+    }
+
+    /**
+     * Gets the state of a pixel
+     * @param x horizontal coordinate, eg: 2
+     * @param y vertical coordinate, eg: 2
+     */
+    //% weight=75 blockGap=8
+    //% blockId=ledext_get block="get state of pixel at|x: %x|y: %y"
+    //% parts="ledmatrix"
+    export function get(x: number, y: number): boolean {
+        return getLevel(x, y) > 0;
+    }
 
     /**
      * Suspends refreshing of the display until resume is called
      */
-    //% weight=50 blockGap=8
+    //% weight=70 blockGap=8
     //% blockId=ledext_suspend block="suspend"
     //% parts="ledmatrix"
     export function suspend(): void {
@@ -115,7 +115,7 @@ namespace ledext {
     /**
      * Resumes refreshing of the display.
      */
-    //% weight=40 blockGap=8
+    //% weight=65 blockGap=8
     //% blockId=ledext_resume block="resume"
     //% parts="ledmatrix"
     export function resume(): void {
@@ -126,7 +126,7 @@ namespace ledext {
     /**
      * Refreshes the display
      */
-    //% weight=50 blockGap=8
+    //% weight=60 blockGap=8
     //% blockId=ledext_refresh block="refresh"
     //% parts="ledmatrix"
     export function refresh(): void {
@@ -143,7 +143,7 @@ namespace ledext {
      * @param animation, eg: animationStyle.None
      * @param gapMs, eg: 200
      */
-    //% weight=10 blockGap=8
+    //% weight=55 blockGap=8
     //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animate| spacing: %gapMs"
     //% parts="ledmatrix"
     export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gapMs: number = 200) {
@@ -178,7 +178,7 @@ namespace ledext {
      * else to represent the pixel being off.
      * @param image
      */
-    //% weight=10 blockGap=8
+    //% weight=50 blockGap=8
     //% blockId=ledext_countFrames block="count frames in |image: %image"
     //% parts="ledmatrix"
     export function countFrames(image: string[]) {
@@ -196,7 +196,7 @@ namespace ledext {
      * @param scrollDirection, eg: scrollDirectionStyle.RightToLeft
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
-    //% weight=10 blockGap=8
+    //% weight=45 blockGap=8
     //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from image: %image| direction: %scrollDirection| reading: %inputDirection"
     //% parts="ledmatrix"
     export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
