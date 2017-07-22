@@ -267,6 +267,7 @@ namespace led_extended {
                     case "9":
                     case "|":
                     case "#":
+                    case "X":
                     case "$":
                         level = 255;
                         break;
