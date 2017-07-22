@@ -3,21 +3,11 @@ namespace led_extended {
     let img: Image;
     let suspended: boolean;
 
-    export enum animationStyle {
-        None,
-        SlideIn,
-        SlideInAndOut,
-        SlideOut
-    }
     export enum scrollDirectionStyle {
         LeftToRight,
         RightToLeft,
         BottomToTop,
         TopToBottom
-    }
-    export enum inputDirectionStyle {
-        FirstToLast,
-        LastToFirst
     }
 
     /**
@@ -134,59 +124,6 @@ namespace led_extended {
     }
 
     /**
-     * Animates an image presented as an array of strings.  Each string represents a row and each character the state of a pixel. 
-     * Valid characters include 0-9 to represent the brightness of a pixel, F/f to represent a flashing pixel or anything else to
-     * represent the pixel being off.
-     * @param scrollDirection eg: scrollDirectionStyle.RightToLeft
-     * @param inputDirection eg: inputDirectionStyle.FirstToLast
-     * @param animation eg: animationStyle.None
-     * @param gap eg: 200
-     */
-    //% weight=55 blockGap=8
-    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animation| ms between frames: %gap"
-    //% parts="ledmatrix"
-    export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gap: number) {
-        if (image == null) return;
-        if (image.length == 0) return;
-        let frames: number;
-        let index: number;
-        frames = countFrames(image);
-        index = 0;
-        switch (animation) {
-            case animationStyle.SlideIn:
-                index = -5;
-                break;
-            case animationStyle.SlideInAndOut:
-                index = -5;
-                frames = frames + 5;
-                break;
-            case animationStyle.SlideOut:
-                frames = frames + 5;
-                break;
-        }
-        if (gap < 20) gap = 20;
-        for (; index < frames; index++) {
-            drawFrame(index, image, scrollDirection, inputDirection);
-            basic.pause(gap);
-        }
-    }
-
-    /**
-     * Counts the frames in an  image presented as an array of strings.  Each string represents a row and each character the state 
-     * of a pixel.  Valid characters include 0-9 to represent the brightness of a pixel, F/f to represent a flashing pixel or anything 
-     * else to represent the pixel being off.
-     * @param image
-     */
-    //% weight=50 blockGap=8
-    //% blockId=ledext_countFrames block="count frames in |image: %image"
-    //% parts="ledmatrix"
-    export function countFrames(image: string[]) {
-        if (image == null) return 0;
-        if (image.length == 0) return 0;
-        return image[0].length - 4;
-    }
-
-    /**
      * Draws a specified frame of an image presented as an array of strings.  Each string represents a row and each character the 
      * state of a pixel. Valid characters include 0-9 to represent the brightness of a pixel, F/f to represent a flashing pixel or
      *  anything else to represent the pixel being off.
@@ -196,29 +133,18 @@ namespace led_extended {
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
     //% weight=45 blockGap=8
-    //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from image: %image| direction: %scrollDirection| reading: %inputDirection"
+    //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from image: %image| direction: %scrollDirection"
     //% parts="ledmatrix"
-    export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
+    export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle) {
         if (image == null) return;
         if (image.length == 0) return;
         suspend();
         for (let y = 0; y < 5; y++) {
-            let pixels: string = "";
-            if (image.length > y) {
-                pixels = image[y];
-            }
             for (let x = 0; x < 5; x++) {
                 let pixel: string;
-                let level: number;
-                let calcIndex: number;
-                if (inputDirection == inputDirectionStyle.FirstToLast) {
-                    calcIndex = frameIndex + x;
-                }
-                else {
-                    calcIndex = (pixels.length - (frameIndex + x)) - 1;
-                }
-                if (pixels.length > calcIndex && calcIndex >= 0) {
-                    pixel = pixels[calcIndex];
+                let level: number;               
+                if (image.length > y && pixels.length > frameIndex + x && frameIndex + x >= 0) {
+                    pixel = image[y][frameIndex+x];
                 }
                 else {
                     pixel = "."
