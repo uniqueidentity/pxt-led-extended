@@ -197,7 +197,7 @@ namespace ledext {
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
     //% weight=10 blockGap=8
-    //% blockId=ledext_animateFrames block="draw frame from |image: %image| in direction: %scrollDirection| reading: %inputDirection"
+    //% blockId=ledext_drawFrame block="draw frame from |image: %image| in direction: %scrollDirection| reading: %inputDirection"
     //% parts="ledmatrix"
     export function drawFrame(image: string[], frameIndex: number, scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
         if (image == null) return;
