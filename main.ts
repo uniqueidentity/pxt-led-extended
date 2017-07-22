@@ -1,5 +1,5 @@
 // An advanced LED display
-namespace led-extended {
+namespace led_extended {
     let img: Image;
     let suspended: boolean;
 
