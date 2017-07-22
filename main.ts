@@ -141,11 +141,16 @@ namespace led_extended {
             for (let x = 0; x < 5; x++) {
                 let pixel: string;
                 let level: number;               
-                if (image.length > y && pixels.length > frameIndex + x && frameIndex + x >= 0) {
-                    pixel = image[y][frameIndex+x];
+                if (image.length > y){
+                    if (image[y].length > frameIndex + x && frameIndex + x >= 0) {
+                        pixel = image[y][frameIndex+x];
+                    }
+                    else{
+                        pixel = ".";   
+                    }
                 }
                 else {
-                    pixel = "."
+                    pixel = ".";
                 }
                 switch (pixel) {
                     case "0":
