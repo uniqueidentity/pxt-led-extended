@@ -167,7 +167,7 @@ namespace ledext {
         }
         if (gapMs < 20) gapMs = 20;
         for (; index < frames; index++) {
-            drawFrame(image, index, scrollDirection, inputDirection);
+            drawFrame(index, image, scrollDirection, inputDirection);
             basic.pause(gapMs);
         }
     }
@@ -191,15 +191,15 @@ namespace ledext {
      * Draws a specified frame of an image presented as an array of strings.  Each string represents a row and each character the 
      * state of a pixel. Valid characters include 0-9 to represent the brightness of a pixel, F/f to represent a flashing pixel or
      *  anything else to represent the pixel being off.
-     * @param image
      * @param frameIndex, eg: 0
+     * @param image
      * @param scrollDirection, eg: scrollDirectionStyle.RightToLeft
      * @param inputDirection, eg: inputDirectionStyle.FirstToLast
      */
     //% weight=10 blockGap=8
-    //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from |image: %image| direction: %scrollDirection| reading: %inputDirection"
+    //% blockId=ledext_drawFrame block="draw |frame: %frameIndex| from image: %image| direction: %scrollDirection| reading: %inputDirection"
     //% parts="ledmatrix"
-    export function drawFrame(image: string[], frameIndex: number, scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
+    export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle) {
         if (image == null) return;
         if (image.length == 0) return;
         suspend();
