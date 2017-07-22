@@ -144,7 +144,7 @@ namespace ledext {
      * @param gapMs, eg: 200
      */
     //% weight=55 blockGap=8
-    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animate| spacing: %gapMs"
+    //% blockId=ledext_animateFrames block="animate |image: %image| direction: %scrollDirection| reading: %inputDirection| style: %animation| ms between frames: %gapMs"
     //% parts="ledmatrix"
     export function animateFrames(image: string[], scrollDirection: scrollDirectionStyle, inputDirection: inputDirectionStyle, animation: animationStyle, gapMs: number = 200) {
         if (image == null) return;
