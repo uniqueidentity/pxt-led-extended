@@ -136,11 +136,13 @@ namespace led_extended {
     //% parts="ledmatrix"
     export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle) {
         let pixel: string;
-        let level: number;               
+        let level: number;    
+        let x: number;
+        let y: number;
         if (image == null) return;
         if (image.length == 0) return;
-        for (let y = 0; y < 5; y++) {
-            for (let x = 0; x < 5; x++) {
+        for (y = 0; y < 5; y++) {
+            for (x = 0; x < 5; x++) {
                 if (image.length > y){
                     if (image[y].length > frameIndex + x && frameIndex + x >= 0) {
                         pixel = image[y][frameIndex+x];
