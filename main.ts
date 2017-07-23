@@ -136,73 +136,48 @@ namespace led_extended {
     //% parts="ledmatrix"
     export function drawFrame(frameIndex: number, image: string[], scrollDirection: scrollDirectionStyle) {
         let pixel: string;
-        let level: number;    
+        let level: number;
         let x: number;
         let y: number;
         if (image == null) return;
         if (image.length == 0) return;
         for (y = 0; y < 5; y++) {
             for (x = 0; x < 5; x++) {
-                if (image.length > y){
+                if (image.length > y) {
                     if (image[y].length > frameIndex + x && frameIndex + x >= 0) {
-                        pixel = image[y][frameIndex+x];
+                        pixel = image[y][frameIndex + x];
                     }
-                    else{
-                        pixel = ".";   
+                    else {
+                        pixel = ".";
                     }
                 }
                 else {
                     pixel = ".";
                 }
-                switch (pixel) {
-                    case "0":
-                    case " ":
-                    case ".":
+                if (pixel == "F") {
+                    if (frameIndex % 2 == 0) {
                         level = 0;
-                        break;
-                    case "F":
-                        if (frameIndex % 2 == 0) {
-                            level = 0;
-                        }
-                        else {
-                            level = 255;
-                        }
-                        break;
-                    case "f":
-                        if (frameIndex % 2 == 0) {
-                            level = 255;
-                        }
-                        else {
-                            level = 0;
-                        }
-                        break;
-                    case "1":
-                        level = 10;
-                        break;
-                    case "2":
-                        level = 30;
-                        break;
-                    case "3":
-                        level = 70;
-                        break;
-                    case "4":
-                        level = 110;
-                        break;
-                    case "5":
-                        level = 140;
-                        break;
-                    case "6":
-                        level = 170;
-                        break;
-                    case "7":
-                        level = 100;
-                        break;
-                    case "8":
-                        level = 225;
-                        break;
-                    default:
+                    }
+                    else {
                         level = 255;
-                        break;
+                    }
+                }
+                else if (pixel == "f") {
+                    if (frameIndex % 2 == 0) {
+                        level = 255;
+                    }
+                    else {
+                        level = 0;
+                    }
+                }
+                else if (pixel == "0" || pixel == " " || pixel == ".") {
+                    level = 0;
+                }
+                else {
+                    level = (255 / 9) * parseInt(pixel)
+                    if (level == 0) {
+                        level = 255;
+                    }
                 }
                 switch (scrollDirection) {
                     case scrollDirectionStyle.RightToLeft:
